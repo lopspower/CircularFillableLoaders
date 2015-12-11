@@ -48,7 +48,7 @@ You must use the following properties in your XML to change your CircularImageVi
 * `app:border`          (boolean)   -> default true
 * `app:border_width`    (dimension) -> default 4dp
 * `app:wave_color`      (color)     -> default BLACK
-* `app:wave_amplitude`  (float)     -> default 0.05f (between 0.00f and 0.10f1)
+* `app:wave_amplitude`  (float)     -> default 0.05f (between 0.00f and 0.10f)
 
 JAVA
 -----
