@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+            android:id="@+id/circularFillableLoaders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            app:progress="80"
+            app:wave_color="#3f51b5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/seekBarProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dsb_indicatorColor="@color/colorPrimary"
+            app:dsb_max="100"
+            app:dsb_min="0"
+            app:dsb_progressColor="@color/colorPrimary"
+            app:dsb_value="80" />
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/seekBarBorderWidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:dsb_indicatorColor="@color/colorPrimary"
+            app:dsb_max="100"
+            app:dsb_min="0"
+            app:dsb_progressColor="@color/colorPrimary"
+            app:dsb_value="10" />
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/seekBarAmplitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:dsb_indicatorColor="@color/colorPrimary"
+            app:dsb_max="100"
+            app:dsb_min="1"
+            app:dsb_progressColor="@color/colorPrimary"
+            app:dsb_value="50" />
+
+        <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
+            android:id="@+id/shadeslider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

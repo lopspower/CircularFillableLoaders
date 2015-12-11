@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircularFillableLoaders">
+        <attr name="progress" format="integer"/>
+        <attr name="border" format="boolean"/>
+        <attr name="border_width" format="dimension"/>
+        <attr name="wave_color" format="color"/>
+        <attr name="wave_amplitude" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="Theme">
+        <attr name="circularFillableLoadersStyle" format="reference"/>
+    </declare-styleable>
+
+</resources>
