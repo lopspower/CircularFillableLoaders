@@ -1,4 +1,4 @@
-<p align="center"><a target="_blank" href="https://play.google.com/store/apps/details?id=com.mikhaellopez.circularfillableloaders" title="Download on Google Play Store"><img src="http://i66.tinypic.com/5zgqwn.png"></a></p>
+<p align="center"><a target="_blank" href="https://play.google.com/store/apps/details?id=com.mikhaellopez.circularfillableloaderssample" title="Download on Google Play Store"><img src="http://i66.tinypic.com/5zgqwn.png"></a></p>
 
 CircularFillableLoaders
 =================
@@ -10,7 +10,7 @@ CircularFillableLoaders
 
 This is an Android project allowing to realize a beautiful circular fillable loaders to be used for splashscreen for example.
 
-<a target="_blank" href="https://play.google.com/store/apps/details?id=com.mikhaellopez.circularfillableloaders">
+<a target="_blank" href="https://play.google.com/store/apps/details?id=com.mikhaellopez.circularfillableloaderssample">
   <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
 
