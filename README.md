@@ -10,7 +10,7 @@ CircularFillableLoaders
 
 This is an Android project allowing to realize a beautiful circular fillable loaders to be used for splashscreen for example.
 
-<img src="/preview/preview.gif" alt="sample" title="sample" width="300" height="460" align="right" hspace="20" vspace="50" />
+<img src="/preview/preview.gif" alt="sample" title="sample" width="300" height="460" align="right"  vspace="50" />
 
 USAGE
 -----
