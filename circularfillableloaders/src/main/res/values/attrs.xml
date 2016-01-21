@@ -2,11 +2,11 @@
 <resources>
 
     <declare-styleable name="CircularFillableLoaders">
-        <attr name="progress" format="integer"/>
-        <attr name="border" format="boolean"/>
-        <attr name="border_width" format="dimension"/>
-        <attr name="wave_color" format="color"/>
-        <attr name="wave_amplitude" format="float"/>
+        <attr name="cfl_progress" format="integer"/>
+        <attr name="cfl_border" format="boolean"/>
+        <attr name="cfl_border_width" format="dimension"/>
+        <attr name="cfl_wave_color" format="color"/>
+        <attr name="cfl_wave_amplitude" format="float"/>
     </declare-styleable>
 
     <declare-styleable name="Theme">

@@ -86,18 +86,18 @@ public class CircularFillableLoaders extends ImageView {
         TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.CircularFillableLoaders, defStyleAttr, 0);
 
         // Init Wave
-        waveColor = attributes.getColor(R.styleable.CircularFillableLoaders_wave_color, DEFAULT_WAVE_COLOR);
-        float amplitudeRatioAttr = attributes.getFloat(R.styleable.CircularFillableLoaders_wave_amplitude, DEFAULT_AMPLITUDE_RATIO);
+        waveColor = attributes.getColor(R.styleable.CircularFillableLoaders_cfl_wave_color, DEFAULT_WAVE_COLOR);
+        float amplitudeRatioAttr = attributes.getFloat(R.styleable.CircularFillableLoaders_cfl_wave_amplitude, DEFAULT_AMPLITUDE_RATIO);
         amplitudeRatio = (amplitudeRatioAttr > DEFAULT_AMPLITUDE_RATIO) ? DEFAULT_AMPLITUDE_RATIO : amplitudeRatioAttr;
-        setProgress(attributes.getInteger(R.styleable.CircularFillableLoaders_progress, 0));
+        setProgress(attributes.getInteger(R.styleable.CircularFillableLoaders_cfl_progress, 0));
 
         // Init Border
         borderPaint = new Paint();
         borderPaint.setAntiAlias(true);
         borderPaint.setStyle(Paint.Style.STROKE);
-        if (attributes.getBoolean(R.styleable.CircularFillableLoaders_border, true)) {
+        if (attributes.getBoolean(R.styleable.CircularFillableLoaders_cfl_border, true)) {
             float defaultBorderSize = DEFAULT_BORDER_WIDTH * getContext().getResources().getDisplayMetrics().density;
-            borderPaint.setStrokeWidth(attributes.getDimension(R.styleable.CircularFillableLoaders_border_width, defaultBorderSize));
+            borderPaint.setStrokeWidth(attributes.getDimension(R.styleable.CircularFillableLoaders_cfl_border_width, defaultBorderSize));
         } else {
             borderPaint.setStrokeWidth(0);
         }
