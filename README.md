@@ -18,7 +18,7 @@ USAGE
 To make a circular fillable loaders add CircularFillableLoaders in your layout XML and add CircularFillableLoaders library in your project or you can also grab it via Gradle:
 
 ```groovy
-compile 'com.mikhaellopez:circularfillableloaders:1.0.0'
+compile 'com.mikhaellopez:circularfillableloaders:1.1.0'
 ```
 
 XML
@@ -30,11 +30,11 @@ XML
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/your_logo"
-            app:border="true"
-            app:border_width="12dp"
-            app:progress="80"
-            app:wave_amplitude="0.06"
-            app:wave_color="#3f51b5" />
+            app:cfl_border="true"
+            app:cfl_border_width="12dp"
+            app:cfl_progress="80"
+            app:cfl_wave_amplitude="0.06"
+            app:cfl_wave_color="#3f51b5" />
 ```
 
 You must use the following properties in your XML to change your CircularImageView.
@@ -42,11 +42,11 @@ You must use the following properties in your XML to change your CircularImageVi
 
 #####Properties:
 
-* `app:progress`        (integer)   -> default 0
-* `app:border`          (boolean)   -> default true
-* `app:border_width`    (dimension) -> default 4dp
-* `app:wave_color`      (color)     -> default BLACK
-* `app:wave_amplitude`  (float)     -> default 0.05f (between 0.00f and 0.10f)
+* `app:cfl_progress`        (integer)   -> default 0
+* `app:cfl_border`          (boolean)   -> default true
+* `app:cfl_border_width`    (dimension) -> default 4dp
+* `app:cfl_wave_color`      (color)     -> default BLACK
+* `app:cfl_wave_amplitude`  (float)     -> default 0.05f (between 0.00f and 0.10f)
 
 JAVA
 -----
