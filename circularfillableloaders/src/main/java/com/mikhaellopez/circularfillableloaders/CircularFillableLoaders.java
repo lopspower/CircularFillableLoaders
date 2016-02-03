@@ -14,7 +14,6 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.ThumbnailUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.animation.DecelerateInterpolator;
@@ -79,27 +78,30 @@ public class CircularFillableLoaders extends ImageView {
         wavePaint = new Paint();
         wavePaint.setAntiAlias(true);
 
-        // Init Animation
-        initAnimation();
-
-        // Load the styled attributes and set their properties
-        TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.CircularFillableLoaders, defStyleAttr, 0);
-
-        // Init Wave
-        waveColor = attributes.getColor(R.styleable.CircularFillableLoaders_wave_color, DEFAULT_WAVE_COLOR);
-        float amplitudeRatioAttr = attributes.getFloat(R.styleable.CircularFillableLoaders_wave_amplitude, DEFAULT_AMPLITUDE_RATIO);
-        amplitudeRatio = (amplitudeRatioAttr > DEFAULT_AMPLITUDE_RATIO) ? DEFAULT_AMPLITUDE_RATIO : amplitudeRatioAttr;
-        setProgress(attributes.getInteger(R.styleable.CircularFillableLoaders_progress, 0));
-
         // Init Border
         borderPaint = new Paint();
         borderPaint.setAntiAlias(true);
         borderPaint.setStyle(Paint.Style.STROKE);
-        if (attributes.getBoolean(R.styleable.CircularFillableLoaders_border, true)) {
-            float defaultBorderSize = DEFAULT_BORDER_WIDTH * getContext().getResources().getDisplayMetrics().density;
-            borderPaint.setStrokeWidth(attributes.getDimension(R.styleable.CircularFillableLoaders_border_width, defaultBorderSize));
-        } else {
-            borderPaint.setStrokeWidth(0);
+
+        if (!isInEditMode()) {
+            // Init Animation
+            initAnimation();
+
+            // Load the styled attributes and set their properties
+            TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.CircularFillableLoaders, defStyleAttr, 0);
+
+            // Init Wave
+            waveColor = attributes.getColor(R.styleable.CircularFillableLoaders_cfl_wave_color, DEFAULT_WAVE_COLOR);
+            float amplitudeRatioAttr = attributes.getFloat(R.styleable.CircularFillableLoaders_cfl_wave_amplitude, DEFAULT_AMPLITUDE_RATIO);
+            amplitudeRatio = (amplitudeRatioAttr > DEFAULT_AMPLITUDE_RATIO) ? DEFAULT_AMPLITUDE_RATIO : amplitudeRatioAttr;
+            setProgress(attributes.getInteger(R.styleable.CircularFillableLoaders_cfl_progress, 0));
+
+            if (attributes.getBoolean(R.styleable.CircularFillableLoaders_cfl_border, true)) {
+                float defaultBorderSize = DEFAULT_BORDER_WIDTH * getContext().getResources().getDisplayMetrics().density;
+                borderPaint.setStrokeWidth(attributes.getDimension(R.styleable.CircularFillableLoaders_cfl_border_width, defaultBorderSize));
+            } else {
+                borderPaint.setStrokeWidth(0);
+            }
         }
 
     }
@@ -115,9 +117,11 @@ public class CircularFillableLoaders extends ImageView {
         if (image == null)
             return;
 
-        canvasSize = canvas.getWidth();
-        if (canvas.getHeight() < canvasSize) {
-            canvasSize = canvas.getHeight();
+        if (!isInEditMode()) {
+            canvasSize = canvas.getWidth();
+            if (canvas.getHeight() < canvasSize) {
+                canvasSize = canvas.getHeight();
+            }
         }
 
         // Draw Image Circular
@@ -180,10 +184,22 @@ public class CircularFillableLoaders extends ImageView {
     private void updateShader() {
         if (this.image == null)
             return;
-        BitmapShader shader = new BitmapShader(Bitmap.createScaledBitmap(
-                ThumbnailUtils.extractThumbnail(image, canvasSize, canvasSize), canvasSize, canvasSize, false),
-                Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+        // Crop Center Image
+        image = cropBitmap(image);
+
+        // Create Shader
+        BitmapShader shader = new BitmapShader(image, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+        // Center Image in Shader
+        Matrix matrix = new Matrix();
+        matrix.setScale((float) canvasSize / (float) image.getWidth(), (float) canvasSize / (float) image.getHeight());
+        shader.setLocalMatrix(matrix);
+
+        // Set Shader in Paint
         paint.setShader(shader);
+
+        // Update Wave Shader
         updateWaveShader();
     }
 
@@ -224,6 +240,24 @@ public class CircularFillableLoaders extends ImageView {
         // use the bitamp to create the shader
         waveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
         this.wavePaint.setShader(waveShader);
+    }
+
+    private Bitmap cropBitmap(Bitmap bitmap) {
+        Bitmap bmp;
+        if (bitmap.getWidth() >= bitmap.getHeight()) {
+            bmp = Bitmap.createBitmap(
+                    bitmap,
+                    bitmap.getWidth() / 2 - bitmap.getHeight() / 2,
+                    0,
+                    bitmap.getHeight(), bitmap.getHeight());
+        } else {
+            bmp = Bitmap.createBitmap(
+                    bitmap,
+                    0,
+                    bitmap.getHeight() / 2 - bitmap.getWidth() / 2,
+                    bitmap.getWidth(), bitmap.getWidth());
+        }
+        return bmp;
     }
 
     private Bitmap drawableToBitmap(Drawable drawable) {
