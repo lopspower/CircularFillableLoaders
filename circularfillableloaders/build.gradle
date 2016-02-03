@@ -23,11 +23,6 @@ android {
     }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
-}
-
 def siteUrl = 'https://github.com/lopspower/CircularFillableLoaders'      // Homepage URL of the library
 def gitUrl = 'https://github.com/lopspower/CircularFillableLoaders.git'   // Git repository URL
 group = "com.mikhaellopez"                                                // Maven Group ID for the artifact
