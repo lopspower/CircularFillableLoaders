@@ -18,7 +18,7 @@ USAGE
 To make a circular fillable loaders add CircularFillableLoaders in your layout XML and add CircularFillableLoaders library in your project or you can also grab it via Gradle:
 
 ```groovy
-compile 'com.mikhaellopez:circularfillableloaders:1.1.0'
+compile 'com.mikhaellopez:circularfillableloaders:1.2.0'
 ```
 
 XML
