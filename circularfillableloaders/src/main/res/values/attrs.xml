@@ -9,8 +9,4 @@
         <attr name="cfl_wave_amplitude" format="float"/>
     </declare-styleable>
 
-    <declare-styleable name="Theme">
-        <attr name="circularFillableLoadersStyle" format="reference"/>
-    </declare-styleable>
-
 </resources>

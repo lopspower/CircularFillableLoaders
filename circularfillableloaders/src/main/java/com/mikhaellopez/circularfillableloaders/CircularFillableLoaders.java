@@ -83,25 +83,23 @@ public class CircularFillableLoaders extends ImageView {
         borderPaint.setAntiAlias(true);
         borderPaint.setStyle(Paint.Style.STROKE);
 
-        if (!isInEditMode()) {
-            // Init Animation
-            initAnimation();
+        // Init Animation
+        initAnimation();
 
-            // Load the styled attributes and set their properties
-            TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.CircularFillableLoaders, defStyleAttr, 0);
+        // Load the styled attributes and set their properties
+        TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.CircularFillableLoaders, defStyleAttr, 0);
 
-            // Init Wave
-            waveColor = attributes.getColor(R.styleable.CircularFillableLoaders_cfl_wave_color, DEFAULT_WAVE_COLOR);
-            float amplitudeRatioAttr = attributes.getFloat(R.styleable.CircularFillableLoaders_cfl_wave_amplitude, DEFAULT_AMPLITUDE_RATIO);
-            amplitudeRatio = (amplitudeRatioAttr > DEFAULT_AMPLITUDE_RATIO) ? DEFAULT_AMPLITUDE_RATIO : amplitudeRatioAttr;
-            setProgress(attributes.getInteger(R.styleable.CircularFillableLoaders_cfl_progress, 0));
+        // Init Wave
+        waveColor = attributes.getColor(R.styleable.CircularFillableLoaders_cfl_wave_color, DEFAULT_WAVE_COLOR);
+        float amplitudeRatioAttr = attributes.getFloat(R.styleable.CircularFillableLoaders_cfl_wave_amplitude, DEFAULT_AMPLITUDE_RATIO);
+        amplitudeRatio = (amplitudeRatioAttr > DEFAULT_AMPLITUDE_RATIO) ? DEFAULT_AMPLITUDE_RATIO : amplitudeRatioAttr;
+        setProgress(attributes.getInteger(R.styleable.CircularFillableLoaders_cfl_progress, 0));
 
-            if (attributes.getBoolean(R.styleable.CircularFillableLoaders_cfl_border, true)) {
-                float defaultBorderSize = DEFAULT_BORDER_WIDTH * getContext().getResources().getDisplayMetrics().density;
-                borderPaint.setStrokeWidth(attributes.getDimension(R.styleable.CircularFillableLoaders_cfl_border_width, defaultBorderSize));
-            } else {
-                borderPaint.setStrokeWidth(0);
-            }
+        if (attributes.getBoolean(R.styleable.CircularFillableLoaders_cfl_border, true)) {
+            float defaultBorderSize = DEFAULT_BORDER_WIDTH * getContext().getResources().getDisplayMetrics().density;
+            borderPaint.setStrokeWidth(attributes.getDimension(R.styleable.CircularFillableLoaders_cfl_border_width, defaultBorderSize));
+        } else {
+            borderPaint.setStrokeWidth(0);
         }
 
     }
