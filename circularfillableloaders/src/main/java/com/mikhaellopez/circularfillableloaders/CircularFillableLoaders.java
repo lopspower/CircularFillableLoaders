@@ -295,7 +295,7 @@ public class CircularFillableLoaders extends ImageView {
         setMeasuredDimension(imageSize, imageSize);
     }
 
-    private int measureWidth(int measureSpec) {
+    protected int measureWidth(int measureSpec) {
         int result;
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
@@ -313,7 +313,7 @@ public class CircularFillableLoaders extends ImageView {
         return result;
     }
 
-    private int measureHeight(int measureSpecHeight) {
+    protected int measureHeight(int measureSpecHeight) {
         int result;
         int specMode = MeasureSpec.getMode(measureSpecHeight);
         int specSize = MeasureSpec.getSize(measureSpecHeight);
