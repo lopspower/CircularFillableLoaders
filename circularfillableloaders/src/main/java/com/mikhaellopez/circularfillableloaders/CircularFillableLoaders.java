@@ -54,6 +54,8 @@ public class CircularFillableLoaders extends ImageView {
     // Animation
     private AnimatorSet animatorSetWave;
 
+    private boolean firstLoadBitmap = true;
+
     //region Constructor & Init Method
     public CircularFillableLoaders(final Context context) {
         this(context, null);
@@ -161,11 +163,12 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     private void loadBitmap() {
-        if (this.drawable == getDrawable())
+        if (this.drawable == getDrawable() && !firstLoadBitmap)
             return;
 
         this.drawable = getDrawable();
         this.image = drawableToBitmap(this.drawable);
+        firstLoadBitmap = false;
         updateShader();
     }
 
@@ -259,14 +262,19 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     private Bitmap drawableToBitmap(Drawable drawable) {
-        if (drawable == null) {
-            return null;
-        } else if (drawable instanceof BitmapDrawable) {
+        if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
         }
 
-        int intrinsicWidth = drawable.getIntrinsicWidth();
-        int intrinsicHeight = drawable.getIntrinsicHeight();
+        int intrinsicWidth;
+        int intrinsicHeight;
+        if (drawable == null) {
+            intrinsicWidth = getWidth();
+            intrinsicHeight = getHeight();
+        } else {
+            intrinsicWidth = drawable.getIntrinsicWidth();
+            intrinsicHeight = drawable.getIntrinsicHeight();
+        }
 
         if (!(intrinsicWidth > 0 && intrinsicHeight > 0))
             return null;
@@ -274,9 +282,11 @@ public class CircularFillableLoaders extends ImageView {
         try {
             // Create Bitmap object out of the drawable
             Bitmap bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bitmap);
-            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-            drawable.draw(canvas);
+            if (drawable != null) {
+                Canvas canvas = new Canvas(bitmap);
+                drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                drawable.draw(canvas);
+            }
             return bitmap;
         } catch (OutOfMemoryError e) {
             // Simply return null of failed bitmap creations
