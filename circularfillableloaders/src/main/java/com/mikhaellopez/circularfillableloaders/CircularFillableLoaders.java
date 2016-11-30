@@ -16,6 +16,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
@@ -426,17 +427,35 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     @Override
-    protected void onAttachedToWindow() {
-        startAnimation();
-        super.onAttachedToWindow();
-    }
-
-    @Override
     protected void onDetachedFromWindow() {
         cancel();
         super.onDetachedFromWindow();
     }
     //endregion
+
+    @Override
+    protected void onVisibilityChanged(View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (visibility == VISIBLE) {
+            startAnimation();
+        } else {
+            cancel();
+        }
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        if (getVisibility() != VISIBLE) {
+            return;
+        }
+
+        if (visibility == VISIBLE) {
+            startAnimation();
+        } else {
+            cancel();
+        }
+    }
 
     /**
      * Transparent the given color by the factor
