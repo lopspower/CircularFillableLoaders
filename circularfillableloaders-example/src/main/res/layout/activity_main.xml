@@ -8,8 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/horizontal_margin"
-        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="50dp"
         android:layout_weight="1"
         android:gravity="center"
@@ -36,10 +36,10 @@
             android:id="@+id/seekBarProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:dsb_indicatorColor="@color/colorPrimary"
+            app:dsb_indicatorColor="@color/primary"
             app:dsb_max="100"
             app:dsb_min="0"
-            app:dsb_progressColor="@color/colorPrimary"
+            app:dsb_progressColor="@color/primary"
             app:dsb_value="80" />
 
         <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
@@ -47,10 +47,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:dsb_indicatorColor="@color/colorPrimary"
+            app:dsb_indicatorColor="@color/primary"
             app:dsb_max="100"
             app:dsb_min="0"
-            app:dsb_progressColor="@color/colorPrimary"
+            app:dsb_progressColor="@color/primary"
             app:dsb_value="10" />
 
         <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
@@ -58,10 +58,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:dsb_indicatorColor="@color/colorPrimary"
+            app:dsb_indicatorColor="@color/primary"
             app:dsb_max="100"
             app:dsb_min="1"
-            app:dsb_progressColor="@color/colorPrimary"
+            app:dsb_progressColor="@color/primary"
             app:dsb_value="50" />
 
         <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider

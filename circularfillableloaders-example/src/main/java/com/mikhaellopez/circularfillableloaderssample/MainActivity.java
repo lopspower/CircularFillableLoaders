@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        circularFillableLoaders = (CircularFillableLoaders) findViewById(R.id.circularFillableLoaders);
+        circularFillableLoaders = findViewById(R.id.circularFillableLoaders);
 
         // PROGRESS
         ((DiscreteSeekBar) findViewById(R.id.seekBarProgress)).setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
@@ -30,12 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(DiscreteSeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(DiscreteSeekBar seekBar) {
-
             }
         });
 
@@ -43,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
         ((DiscreteSeekBar) findViewById(R.id.seekBarBorderWidth)).setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
             public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {
-                circularFillableLoaders.setBorderWidth(value * getResources().getDisplayMetrics().density);
+                circularFillableLoaders.setBorderWidth(value * getResources().getDisplayMetrics()
+                        .density);
             }
 
             @Override

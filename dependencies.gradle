@@ -1,0 +1,28 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext {
+    // APP VERSION
+    androidVersionCode          = 4
+    androidVersionName          = '1.3.0'
+
+    // ANDROID VERSION
+    androidCompileSdkVersion    = 27
+    androidMinSdkVersion        = 15
+    androidTargetSdkVersion     = 27
+
+    // ANDROID LIB
+    supportLibVersion           = '27.1.1'
+    appCompat                   = "com.android.support:appcompat-v7:$supportLibVersion"
+
+    // UI
+    lobsterPickerVersion        = '1.0.1'
+    discreteSeekbarVersion      = '1.0.1'
+    lobsterPicker               = "com.larswerkman:lobsterpicker:$lobsterPickerVersion"
+    discreteSeekbar             = "org.adw.library:discrete-seekbar:$discreteSeekbarVersion"
+
+}

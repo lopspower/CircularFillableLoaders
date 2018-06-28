@@ -22,6 +22,8 @@ import android.widget.ImageView;
 
 /**
  * Created by Mikhael LOPEZ on 09/10/2015.
+ * Copyright (C) 2017 Mikhael LOPEZ
+ * Licensed under the Apache License Version 2.0
  */
 public class CircularFillableLoaders extends ImageView {
     // Default values
