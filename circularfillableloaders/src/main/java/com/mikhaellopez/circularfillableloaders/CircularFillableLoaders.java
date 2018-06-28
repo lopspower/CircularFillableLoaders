@@ -170,11 +170,11 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     private void loadBitmap() {
-        if (this.drawable == getDrawable() && !firstLoadBitmap)
+        if (drawable == getDrawable() && !firstLoadBitmap)
             return;
 
-        this.drawable = getDrawable();
-        this.image = drawableToBitmap(this.drawable);
+        drawable = getDrawable();
+        image = drawableToBitmap(drawable);
         firstLoadBitmap = false;
         updateShader();
     }
@@ -443,7 +443,6 @@ public class CircularFillableLoaders extends ImageView {
         cancel();
         super.onDetachedFromWindow();
     }
-    //endregion
 
     @Override
     protected void onVisibilityChanged(View changedView, int visibility) {
@@ -468,6 +467,7 @@ public class CircularFillableLoaders extends ImageView {
             cancel();
         }
     }
+    //endregion
 
     /**
      * Transparent the given color by the factor
