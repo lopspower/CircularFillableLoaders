@@ -365,13 +365,7 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     public void setProgress(int progress) {
-        // vertical animation.
-        ObjectAnimator waterLevelAnim = ObjectAnimator.ofFloat(this, "waterLevelRatio", waterLevelRatio, 1f - ((float) progress / 100));
-        waterLevelAnim.setDuration(1000);
-        waterLevelAnim.setInterpolator(new DecelerateInterpolator());
-        AnimatorSet animatorSetProgress = new AnimatorSet();
-        animatorSetProgress.play(waterLevelAnim);
-        animatorSetProgress.start();
+        setProgress(progress, 1000);
     }
 
     public void setProgress(int progress, int milliseconds) {
