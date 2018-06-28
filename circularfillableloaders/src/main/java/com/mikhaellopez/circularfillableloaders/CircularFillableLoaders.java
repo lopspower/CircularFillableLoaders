@@ -16,6 +16,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
@@ -55,6 +56,8 @@ public class CircularFillableLoaders extends ImageView {
 
     // Animation
     private AnimatorSet animatorSetWave;
+
+    private boolean firstLoadBitmap = true;
 
     //region Constructor & Init Method
     public CircularFillableLoaders(final Context context) {
@@ -167,11 +170,12 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     private void loadBitmap() {
-        if (this.drawable == getDrawable())
+        if (this.drawable == getDrawable() && !firstLoadBitmap)
             return;
 
         this.drawable = getDrawable();
         this.image = drawableToBitmap(this.drawable);
+        firstLoadBitmap = false;
         updateShader();
     }
 
@@ -267,14 +271,19 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     private Bitmap drawableToBitmap(Drawable drawable) {
-        if (drawable == null) {
-            return null;
-        } else if (drawable instanceof BitmapDrawable) {
+        if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
         }
 
-        int intrinsicWidth = drawable.getIntrinsicWidth();
-        int intrinsicHeight = drawable.getIntrinsicHeight();
+        int intrinsicWidth;
+        int intrinsicHeight;
+        if (drawable == null) {
+            intrinsicWidth = getWidth();
+            intrinsicHeight = getHeight();
+        } else {
+            intrinsicWidth = drawable.getIntrinsicWidth();
+            intrinsicHeight = drawable.getIntrinsicHeight();
+        }
 
         if (!(intrinsicWidth > 0 && intrinsicHeight > 0))
             return null;
@@ -282,9 +291,11 @@ public class CircularFillableLoaders extends ImageView {
         try {
             // Create Bitmap object out of the drawable
             Bitmap bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bitmap);
-            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-            drawable.draw(canvas);
+            if (drawable != null) {
+                Canvas canvas = new Canvas(bitmap);
+                drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                drawable.draw(canvas);
+            }
             return bitmap;
         } catch (OutOfMemoryError e) {
             // Simply return null of failed bitmap creations
@@ -428,17 +439,35 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     @Override
-    protected void onAttachedToWindow() {
-        startAnimation();
-        super.onAttachedToWindow();
-    }
-
-    @Override
     protected void onDetachedFromWindow() {
         cancel();
         super.onDetachedFromWindow();
     }
     //endregion
+
+    @Override
+    protected void onVisibilityChanged(View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (visibility == VISIBLE) {
+            startAnimation();
+        } else {
+            cancel();
+        }
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        if (getVisibility() != VISIBLE) {
+            return;
+        }
+
+        if (visibility == VISIBLE) {
+            startAnimation();
+        } else {
+            cancel();
+        }
+    }
 
     /**
      * Transparent the given color by the factor
