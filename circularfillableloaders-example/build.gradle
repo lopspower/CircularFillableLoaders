@@ -18,8 +18,8 @@ android {
 }
 
 dependencies {
-    implementation project(':circularfillableloaders')
-    //implementation "com.mikhaellopez:circularfillableloaders:$androidVersionName"
+    //implementation project(':circularfillableloaders')
+    implementation "com.mikhaellopez:circularfillableloaders:$androidVersionName"
 
     implementation appCompat
     implementation lobsterPicker
