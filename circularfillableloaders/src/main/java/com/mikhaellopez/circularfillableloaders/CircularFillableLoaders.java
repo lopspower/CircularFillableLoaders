@@ -104,6 +104,8 @@ public class CircularFillableLoaders extends ImageView {
             borderPaint.setStrokeWidth(0);
         }
 
+        attributes.recycle();
+
     }
     //endregion
 
@@ -141,8 +143,10 @@ public class CircularFillableLoaders extends ImageView {
             waveShaderMatrix.setScale(1, amplitudeRatio / DEFAULT_AMPLITUDE_RATIO, 0, defaultWaterLevel);
             // translate shader according to waveShiftRatio and waterLevelRatio
             // this decides the start position(waveShiftRatio for x, waterLevelRatio for y) of waves
-            waveShaderMatrix.postTranslate(waveShiftRatio * getWidth(),
-                    (DEFAULT_WATER_LEVEL_RATIO - waterLevelRatio) * getHeight());
+            int width = getWidth();
+            int height = getHeight();
+            waveShaderMatrix.postTranslate(waveShiftRatio * width,
+                    (DEFAULT_WATER_LEVEL_RATIO - waterLevelRatio) * height);
 
             // assign matrix to invalidate the shader
             waveShader.setLocalMatrix(waveShaderMatrix);
@@ -151,12 +155,12 @@ public class CircularFillableLoaders extends ImageView {
             borderPaint.setColor(waveColor);
             float borderWidth = borderPaint.getStrokeWidth();
             if (borderWidth > 0) {
-                canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, (getWidth() - borderWidth) / 2f - 1f, borderPaint);
+                canvas.drawCircle(width / 2f, height / 2f, (width - borderWidth) / 2f - 1f, borderPaint);
             }
 
             // Draw Wave
-            float radius = getWidth() / 2f - borderWidth;
-            canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, radius, wavePaint);
+            float radius = width / 2f - borderWidth;
+            canvas.drawCircle(width / 2f, height / 2f, radius, wavePaint);
         } else {
             wavePaint.setShader(null);
         }
@@ -182,7 +186,7 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     private void updateShader() {
-        if (this.image == null)
+        if (image == null)
             return;
 
         // Crop Center Image
@@ -204,12 +208,14 @@ public class CircularFillableLoaders extends ImageView {
     }
 
     private void updateWaveShader() {
-        double defaultAngularFrequency = 2.0f * Math.PI / DEFAULT_WAVE_LENGTH_RATIO / getWidth();
-        float defaultAmplitude = getHeight() * DEFAULT_AMPLITUDE_RATIO;
-        defaultWaterLevel = getHeight() * DEFAULT_WATER_LEVEL_RATIO;
-        float defaultWaveLength = getWidth();
+        int width = getWidth();
+        int height = getHeight();
 
-        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        double defaultAngularFrequency = 2.0f * Math.PI / DEFAULT_WAVE_LENGTH_RATIO / width;
+        float defaultAmplitude = height * DEFAULT_AMPLITUDE_RATIO;
+        defaultWaterLevel = height * DEFAULT_WATER_LEVEL_RATIO;
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
 
         Paint wavePaint = new Paint();
@@ -218,8 +224,8 @@ public class CircularFillableLoaders extends ImageView {
 
         // Draw default waves into the bitmap
         // y=Asin(ωx+φ)+h
-        final int endX = getWidth() + 1;
-        final int endY = getHeight() + 1;
+        final int endX = width + 1;
+        final int endY = height + 1;
 
         float[] waveY = new float[endX];
 
@@ -232,7 +238,7 @@ public class CircularFillableLoaders extends ImageView {
         }
 
         wavePaint.setColor(waveColor);
-        final int wave2Shift = (int) (defaultWaveLength / 4);
+        final int wave2Shift = width / 4;
         for (int beginX = 0; beginX < endX; beginX++) {
             canvas.drawLine(beginX, waveY[(beginX + wave2Shift) % endX], beginX, endY, wavePaint);
         }
