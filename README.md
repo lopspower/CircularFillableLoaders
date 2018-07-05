@@ -37,7 +37,7 @@ XML
             app:cfl_wave_color="#3f51b5" />
 ```
 
-You must use the following properties in your XML to change your CircularImageView.
+You must use the following properties in your XML to change your CircularFillableLoaders.
 
 
 ##### Properties:
