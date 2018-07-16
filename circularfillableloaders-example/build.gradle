@@ -23,7 +23,4 @@ dependencies {
 
     implementation appCompat
     implementation lobsterPicker
-    implementation(discreteSeekbar) {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
 }

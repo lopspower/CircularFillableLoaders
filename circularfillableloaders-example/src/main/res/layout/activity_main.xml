@@ -32,37 +32,32 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        <SeekBar
             android:id="@+id/seekBarProgress"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:dsb_indicatorColor="@color/primary"
-            app:dsb_max="100"
-            app:dsb_min="0"
-            app:dsb_progressColor="@color/primary"
-            app:dsb_value="80" />
+            android:max="100"
+            android:progress="80"
+            android:progressDrawable="@drawable/scrubber_progress" />
 
-        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        <SeekBar
             android:id="@+id/seekBarBorderWidth"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:dsb_indicatorColor="@color/primary"
-            app:dsb_max="100"
-            app:dsb_min="0"
-            app:dsb_progressColor="@color/primary"
-            app:dsb_value="10" />
+            android:max="100"
+            android:progress="10"
+            android:progressDrawable="@drawable/scrubber_progress" />
 
-        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        <SeekBar
             android:id="@+id/seekBarAmplitude"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:dsb_indicatorColor="@color/primary"
-            app:dsb_max="100"
-            app:dsb_min="1"
-            app:dsb_progressColor="@color/primary"
-            app:dsb_value="50" />
+            android:max="100"
+            android:min="1"
+            android:progress="50"
+            android:progressDrawable="@drawable/scrubber_progress" />
 
         <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
             android:id="@+id/shadeslider"

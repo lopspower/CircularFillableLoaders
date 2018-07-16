@@ -3,12 +3,11 @@ package com.mikhaellopez.circularfillableloaderssample;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.SeekBar;
 
 import com.larswerkman.lobsterpicker.OnColorListener;
 import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider;
 import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders;
-
-import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,51 +21,57 @@ public class MainActivity extends AppCompatActivity {
         circularFillableLoaders = findViewById(R.id.circularFillableLoaders);
 
         // PROGRESS
-        ((DiscreteSeekBar) findViewById(R.id.seekBarProgress)).setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
+        ((SeekBar) findViewById(R.id.seekBarProgress)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {
-                circularFillableLoaders.setProgress(value);
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                circularFillableLoaders.setProgress(progress);
             }
 
             @Override
-            public void onStartTrackingTouch(DiscreteSeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
             }
 
             @Override
-            public void onStopTrackingTouch(DiscreteSeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
         // BORDER
-        ((DiscreteSeekBar) findViewById(R.id.seekBarBorderWidth)).setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
+        ((SeekBar) findViewById(R.id.seekBarBorderWidth)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {
-                circularFillableLoaders.setBorderWidth(value * getResources().getDisplayMetrics()
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                circularFillableLoaders.setBorderWidth(progress * getResources().getDisplayMetrics()
                         .density);
             }
 
             @Override
-            public void onStartTrackingTouch(DiscreteSeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
             }
 
             @Override
-            public void onStopTrackingTouch(DiscreteSeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
         // AMPLITUDE
-        ((DiscreteSeekBar) findViewById(R.id.seekBarAmplitude)).setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
+        ((SeekBar) findViewById(R.id.seekBarAmplitude)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {
-                circularFillableLoaders.setAmplitudeRatio((float) value / 1000);
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                circularFillableLoaders.setAmplitudeRatio((float) progress / 1000);
             }
 
             @Override
-            public void onStartTrackingTouch(DiscreteSeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
             }
 
             @Override
-            public void onStopTrackingTouch(DiscreteSeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
