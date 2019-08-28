@@ -5,9 +5,9 @@ CircularFillableLoaders
 
 <img src="/preview/preview.gif" alt="sample" title="sample" width="300" height="447" align="right" vspace="52" />
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+[![Download](https://api.bintray.com/packages/lopspower/maven/com.mikhaellopez:circularfillableloaders/images/download.svg?version=1.3.2)](https://bintray.com/lopspower/maven/com.mikhaellopez:circularfillableloaders/1.3.2/link)
 <br>
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-CircularFillableLoaders-lightgrey.svg?style=flat)](https://android-arsenal.com/details/1/2897)
 [![Twitter](https://img.shields.io/badge/Twitter-@LopezMikhael-blue.svg?style=flat)](http://twitter.com/lopezmikhael)
@@ -32,27 +32,26 @@ XML
 
 ```xml
 <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
-            android:id="@+id/circularFillableLoaders"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/your_logo"
-            app:cfl_border="true"
-            app:cfl_border_width="12dp"
-            app:cfl_progress="80"
-            app:cfl_wave_amplitude="0.06"
-            app:cfl_wave_color="#3f51b5" />
+    android:id="@+id/circularFillableLoaders"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/your_logo"
+    app:cfl_border="true"
+    app:cfl_border_width="12dp"
+    app:cfl_progress="80"
+    app:cfl_wave_amplitude="0.06"
+    app:cfl_wave_color="#3f51b5" />
 ```
 
 You must use the following properties in your XML to change your CircularFillableLoaders.
 
-
-##### Properties:
-
-* `app:cfl_progress`        (integer)   -> default 0
-* `app:cfl_border`          (boolean)   -> default true
-* `app:cfl_border_width`    (dimension) -> default 4dp
-* `app:cfl_wave_color`      (color)     -> default BLACK
-* `app:cfl_wave_amplitude`  (float)     -> default 0.05f (between 0.00f and 0.10f)
+| Properties              | Type      | Default                         |
+| ----------------------- | ----------| ------------------------------- |
+| `app:cfl_progress`      | integer   | 0                               |
+| `app:cfl_border`        | boolean   | true                            |
+| `app:cfl_border_width`  | dimension | 4dp                             |
+| `app:cfl_wave_color`    | color     | BLACK                           |
+| `app:cfl_wave_amplitude`| float     | 0.05f (between 0.00f and 0.10f) |
 
 JAVA
 -----
@@ -69,6 +68,12 @@ circularImageView.setBorderWidth(10 * getResources().getDisplayMetrics().density
 circularFillableLoaders.setAmplitudeRatio(0.08);
 ```
 
+SUPPORT ❤️
+-----
+
+Find this library useful? Support it by joining [**stargazers**](https://github.com/lopspower/CircularFillableLoaders/stargazers) for this repository ⭐️
+<br/>
+And [**follow me**](https://github.com/lopspower?tab=followers) for my next creations 👍
 
 LICENCE
 -----
