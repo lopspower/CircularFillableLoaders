@@ -1,4 +1,4 @@
-<p align="center"><img src="http://i66.tinypic.com/5zgqwn.png"></p>
+<p align="center"><img src="/preview/header.png"></p>
 
 CircularFillableLoaders
 =================
