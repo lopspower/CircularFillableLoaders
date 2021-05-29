@@ -7,7 +7,7 @@ CircularFillableLoaders
 
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
-[![Download](https://api.bintray.com/packages/lopspower/maven/com.mikhaellopez:circularfillableloaders/images/download.svg?version=1.3.2)](https://bintray.com/lopspower/maven/com.mikhaellopez:circularfillableloaders/1.3.2/link)
+[![Maven Central](https://img.shields.io/maven-central/v/com.mikhaellopez/circularfillableloaders.svg?label=Maven%20Central)](https://search.maven.org/artifact/com.mikhaellopez/circularfillableloaders)
 <br>
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-CircularFillableLoaders-lightgrey.svg?style=flat)](https://android-arsenal.com/details/1/2897)
 [![Twitter](https://img.shields.io/badge/Twitter-@LopezMikhael-blue.svg?style=flat)](http://twitter.com/lopezmikhael)
@@ -24,7 +24,7 @@ USAGE
 To make a circular fillable loaders add CircularFillableLoaders in your layout XML and add CircularFillableLoaders library in your project or you can also grab it via Gradle:
 
 ```groovy
-implementation 'com.mikhaellopez:circularfillableloaders:1.3.2'
+implementation 'com.mikhaellopez:circularfillableloaders:1.4.0'
 ```
 
 XML

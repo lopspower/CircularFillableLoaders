@@ -12,15 +12,14 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    //implementation project(':circularfillableloaders')
-    implementation "com.mikhaellopez:circularfillableloaders:$androidVersionName"
+    implementation project(':circularfillableloaders')
+    //implementation "com.mikhaellopez:circularfillableloaders:$androidVersionName"
 
-    implementation appCompat
+    implementation androidXAppCompat
     implementation lobsterPicker
 }

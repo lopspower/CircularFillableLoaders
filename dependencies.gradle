@@ -1,26 +1,46 @@
 allprojects {
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
 }
 
 ext {
     // APP VERSION
-    androidVersionCode          = 4
-    androidVersionName          = '1.3.2'
+    androidVersionCode          = 5
+    androidVersionName          = '1.4.0'
+    libraryGroupId              = 'com.mikhaellopez'
+    libraryArtifactId           = 'circularfillableloaders'
+    libraryVersion              = androidVersionName
 
     // ANDROID VERSION
-    androidCompileSdkVersion    = 27
+    androidCompileSdkVersion    = 30
     androidMinSdkVersion        = 14
-    androidTargetSdkVersion     = 27
+    androidTargetSdkVersion     = 30
 
     // ANDROID LIB
-    supportLibVersion           = '27.1.1'
-    appCompat                   = "com.android.support:appcompat-v7:$supportLibVersion"
+    androidXAppCompat           = "androidx.appcompat:appcompat:1.3.0"
 
     // UI
-    lobsterPickerVersion        = '1.0.1'
-    lobsterPicker               = "com.larswerkman:lobsterpicker:$lobsterPickerVersion"
+    lobsterPicker               = "com.larswerkman:lobsterpicker:1.0.1"
+
+    // DEPENDENCY CHECK STRATEGY
+    dependencyUpdatesStrategy = {
+        def isNonStable = { String version ->
+            def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { keyword ->
+                version.toUpperCase().contains(keyword)
+            }
+            def regex = /^[0-9,.v-]+(-r)?$/
+            return !stableKeyword && !(version ==~ regex)
+        }
+        componentSelection {
+            all {
+                if (isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)) {
+                    reject('Release candidate')
+                }
+            }
+        }
+    }
 
 }

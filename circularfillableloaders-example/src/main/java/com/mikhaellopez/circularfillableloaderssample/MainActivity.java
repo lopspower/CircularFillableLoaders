@@ -2,8 +2,9 @@ package com.mikhaellopez.circularfillableloaderssample;
 
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.larswerkman.lobsterpicker.OnColorListener;
 import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider;
