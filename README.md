@@ -78,5 +78,5 @@ And [**follow me**](https://github.com/lopspower?tab=followers) for my next crea
 LICENCE
 -----
 
-CircularImageView by [Lopez Mikhael](http://mikhaellopez.com/) is licensed under a [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+CircularFillableLoaders by [Lopez Mikhael](http://mikhaellopez.com/) is licensed under a [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 Based on a work at https://github.com/gelitenight/WaveView.
