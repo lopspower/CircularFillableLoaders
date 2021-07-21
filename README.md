@@ -8,8 +8,6 @@ CircularFillableLoaders
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
 [![Maven Central](https://img.shields.io/maven-central/v/com.mikhaellopez/circularfillableloaders.svg?label=Maven%20Central)](https://search.maven.org/artifact/com.mikhaellopez/circularfillableloaders)
-<br>
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-CircularFillableLoaders-lightgrey.svg?style=flat)](https://android-arsenal.com/details/1/2897)
 [![Twitter](https://img.shields.io/badge/Twitter-@LopezMikhael-blue.svg?style=flat)](http://twitter.com/lopezmikhael)
 
 This is an Android project allowing to realize a beautiful circular fillable loaders to be used for splashscreen for example.
